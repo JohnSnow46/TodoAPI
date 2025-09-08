@@ -1,0 +1,12 @@
+C:\Users\frane\Desktop\C#\FINAL FINAL\TodoAPI\TodoAPI.Core\bin\Debug\net9.0\TodoAPI.Core.deps.json
+C:\Users\frane\Desktop\C#\FINAL FINAL\TodoAPI\TodoAPI.Core\bin\Debug\net9.0\TodoAPI.Core.dll
+C:\Users\frane\Desktop\C#\FINAL FINAL\TodoAPI\TodoAPI.Core\bin\Debug\net9.0\TodoAPI.Core.pdb
+C:\Users\frane\Desktop\C#\FINAL FINAL\TodoAPI\TodoAPI.Core\obj\Debug\net9.0\TodoAPI.Core.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\frane\Desktop\C#\FINAL FINAL\TodoAPI\TodoAPI.Core\obj\Debug\net9.0\TodoAPI.Core.AssemblyInfoInputs.cache
+C:\Users\frane\Desktop\C#\FINAL FINAL\TodoAPI\TodoAPI.Core\obj\Debug\net9.0\TodoAPI.Core.AssemblyInfo.cs
+C:\Users\frane\Desktop\C#\FINAL FINAL\TodoAPI\TodoAPI.Core\obj\Debug\net9.0\TodoAPI.Core.csproj.CoreCompileInputs.cache
+C:\Users\frane\Desktop\C#\FINAL FINAL\TodoAPI\TodoAPI.Core\obj\Debug\net9.0\TodoAPI.Core.sourcelink.json
+C:\Users\frane\Desktop\C#\FINAL FINAL\TodoAPI\TodoAPI.Core\obj\Debug\net9.0\TodoAPI.Core.dll
+C:\Users\frane\Desktop\C#\FINAL FINAL\TodoAPI\TodoAPI.Core\obj\Debug\net9.0\refint\TodoAPI.Core.dll
+C:\Users\frane\Desktop\C#\FINAL FINAL\TodoAPI\TodoAPI.Core\obj\Debug\net9.0\TodoAPI.Core.pdb
+C:\Users\frane\Desktop\C#\FINAL FINAL\TodoAPI\TodoAPI.Core\obj\Debug\net9.0\ref\TodoAPI.Core.dll
