@@ -13,7 +13,7 @@ namespace TodoAPI.Core.Entities
         public required string FirstName { get; set; }
         public required string LastName { get; set; }
         public required string PasswordHash { get; set; }
-        public DateTime CreateAt { get; set; }
+        public DateTime CreatedAt { get; set; }
         public DateTime UpdatedAt { get; set; }
 
         public ICollection<TaskItem> Tasks { get; set; } = new List<TaskItem>();

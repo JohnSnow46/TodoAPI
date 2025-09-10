@@ -11,7 +11,7 @@ namespace TodoAPI.Core.Entities
         public Enums.TaskStatus Status { get; set; } = Enums.TaskStatus.Todo;
         public Enums.TaskPriority Priority { get; set; } = Enums.TaskPriority.Medium;
         public Guid UserId { get; set; }
-        public Guid CategoryId { get; set; }
+        public Guid? CategoryId { get; set; }
         public DateTime CreatedAt { get; set; }
         public DateTime UpdatedAt { get; set; }
 
