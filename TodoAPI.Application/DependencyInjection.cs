@@ -1,6 +1,8 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using System.Reflection;
 using TodoAPI.Application.Mapping;
+using TodoAPI.Application.Services;
+using TodoAPI.Application.Services.Interfaces;
 
 namespace TodoAPI.Application
 {
@@ -12,6 +14,8 @@ namespace TodoAPI.Application
             {
                 cfg.AddProfile<MappingProfile>();
             });
+
+            services.AddScoped<IJwtService, JwtService>();
 
             return services;
         }
