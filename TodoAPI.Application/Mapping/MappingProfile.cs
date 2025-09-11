@@ -3,7 +3,7 @@ using TodoAPI.Application.DTOs.Category;
 using TodoAPI.Application.DTOs.Task;
 using TodoAPI.Application.DTOs.User;
 using TodoAPI.Core.Entities;
-using static System.Runtime.InteropServices.JavaScript.JSType;
+using TaskStatus = TodoAPI.Core.Enums.TaskStatus;
 
 namespace TodoAPI.Application.Mapping
 {

@@ -1,4 +1,5 @@
 ﻿using TodoAPI.Core.Enums;
+using TaskStatus = TodoAPI.Core.Enums.TaskStatus;
 
 namespace TodoAPI.Application.DTOs.Task
 {
@@ -7,7 +8,7 @@ namespace TodoAPI.Application.DTOs.Task
         public Guid Id { get; set; }
         public string Title { get; set; } = string.Empty;
         public string Description { get; set; } = string.Empty;
-        public Core.Enums.TaskStatus Status { get; set; }
+        public TaskStatus Status { get; set; }
         public TaskPriority Priority { get; set; }
         public Guid UserId { get; set; }
         public string UserName { get; set; } = string.Empty;
