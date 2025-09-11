@@ -1,7 +1,7 @@
-﻿using TodoAPI.Core.Entities;
-using TodoAPI.Application.DTOs.common;
+﻿using TodoAPI.Application.DTOs.Common;
+using TodoAPI.Core.Entities;
 
-namespace TodoAPI.Application.Interfaces
+namespace TodoAPI.Application.Services.Interfaces
 {
     public interface IJwtService
     {
