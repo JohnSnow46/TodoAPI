@@ -1,5 +1,8 @@
+﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
+using System.Text;
 using TodoAPI.Application;
 using TodoAPI.Infrastructure;
 using TodoAPI.Infrastructure.Data;
@@ -24,6 +27,28 @@ try
     // Add Application layer
     builder.Services.AddApplication();
 
+    // JWT Configuration
+    var jwtSettings = builder.Configuration.GetSection("JwtSettings");
+    var secretKey = jwtSettings["SecretKey"] ?? throw new ArgumentNullException("JWT SecretKey not configured");
+
+    builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+        .AddJwtBearer(options =>
+        {
+            options.TokenValidationParameters = new TokenValidationParameters
+            {
+                ValidateIssuerSigningKey = true,
+                IssuerSigningKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(secretKey)),
+                ValidateIssuer = true,
+                ValidIssuer = jwtSettings["Issuer"],
+                ValidateAudience = true,
+                ValidAudience = jwtSettings["Audience"],
+                ValidateLifetime = true,
+                ClockSkew = TimeSpan.Zero
+            };
+        });
+
+    builder.Services.AddAuthorization();
+
     // Configure Swagger from appsettings
     var swaggerConfig = builder.Configuration.GetSection("Swagger");
     var apiConfig = builder.Configuration.GetSection("ApiSettings");
@@ -40,6 +65,34 @@ try
             {
                 Name = swaggerConfig["ContactName"] ?? "Todo API Team",
                 Email = swaggerConfig["ContactEmail"] ?? "support@todoapi.com"
+            }
+        });
+
+        // Add JWT Authentication to Swagger
+        c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
+        {
+            Description = "JWT Authorization header using the Bearer scheme. Example: \"Authorization: Bearer {token}\"",
+            Name = "Authorization",
+            In = ParameterLocation.Header,
+            Type = SecuritySchemeType.ApiKey,
+            Scheme = "Bearer"
+        });
+
+        c.AddSecurityRequirement(new OpenApiSecurityRequirement
+        {
+            {
+                new OpenApiSecurityScheme
+                {
+                    Reference = new OpenApiReference
+                    {
+                        Type = ReferenceType.SecurityScheme,
+                        Id = "Bearer"
+                    },
+                    Scheme = "oauth2",
+                    Name = "Bearer",
+                    In = ParameterLocation.Header
+                },
+                new List<string>()
             }
         });
     });
@@ -84,7 +137,11 @@ try
     }
 
     app.UseHttpsRedirection();
+
+    // Authentication & Authorization middleware
+    app.UseAuthentication();
     app.UseAuthorization();
+
     app.MapControllers();
 
     // Ensure database is created and migrated
@@ -111,23 +168,20 @@ try
     var baseUrl = apiConfig["BaseUrl"] ?? "https://localhost:7189";
     var httpUrl = "http://localhost:5050";
 
-    Console.WriteLine("?? Todo API is starting...");
-    Console.WriteLine($"?? Swagger UI available at: {baseUrl}");
-    Console.WriteLine($"?? Alternative HTTP URL: {httpUrl}");
-    Console.WriteLine($"?? Health check at: {baseUrl}/api/test/health");
-    Console.WriteLine($"?? Categories at: {baseUrl}/api/test/categories");
-    Console.WriteLine("?? Available endpoints:");
-    Console.WriteLine($"   GET  {baseUrl}/api/test/health");
-    Console.WriteLine($"   GET  {baseUrl}/api/test/categories");
-    Console.WriteLine($"   GET  {baseUrl}/api/test/users");
-    Console.WriteLine($"   GET  {baseUrl}/api/test/tasks");
-    Console.WriteLine($"   POST {baseUrl}/api/test/test-user");
+    Console.WriteLine("🚀 Todo API is starting...");
+    Console.WriteLine($"📖 Swagger UI available at: {baseUrl}");
+    Console.WriteLine($"🔗 Alternative HTTP URL: {httpUrl}");
+    Console.WriteLine($"❤️ Health check at: {baseUrl}/api/test/health");
+    Console.WriteLine("🔐 Authentication endpoints:");
+    Console.WriteLine($"   POST {baseUrl}/api/auth/register");
+    Console.WriteLine($"   POST {baseUrl}/api/auth/login");
+    Console.WriteLine($"   GET  {baseUrl}/api/auth/me");
 
     app.Run();
 }
 catch (Exception ex)
 {
-    Console.WriteLine($"? Application failed to start: {ex.Message}");
-    Console.WriteLine($"?? Stack trace: {ex.StackTrace}");
+    Console.WriteLine($"❌ Application failed to start: {ex.Message}");
+    Console.WriteLine($"🔍 Stack trace: {ex.StackTrace}");
     throw;
 }

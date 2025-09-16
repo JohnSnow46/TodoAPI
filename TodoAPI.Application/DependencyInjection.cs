@@ -16,6 +16,7 @@ namespace TodoAPI.Application
             });
 
             services.AddScoped<IJwtService, JwtService>();
+            services.AddScoped<IAuthService, AuthService>();
 
             return services;
         }
