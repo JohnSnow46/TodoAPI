@@ -1,5 +1,4 @@
-﻿// TodoAPI.API/Controllers/TasksController.cs
-using AutoMapper;
+﻿using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using TodoAPI.Application.DTOs.Common;
@@ -11,7 +10,7 @@ namespace TodoAPI.API.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    [Authorize] // Wszystkie endpointy wymagają autoryzacji
+    [Authorize]
     public class TasksController : ControllerBase
     {
         private readonly IUnitOfWork _unitOfWork;

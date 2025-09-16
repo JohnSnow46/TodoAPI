@@ -13,7 +13,6 @@ namespace TodoAPI.Core.Entities
         public string? Description { get; set; }
         public DateTime CreatedAt { get; set; }
 
-        // Navigation property
         public ICollection<TaskItem> Tasks { get; set; } = new List<TaskItem>();
     }
 }

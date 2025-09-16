@@ -65,14 +65,14 @@ namespace TodoAPI.Application.Services
 
         public async Task<ApiResponse<AuthResponse>> RefreshTokenAsync(string refreshToken)
         {
-            // In a real implementation, you'd store refresh tokens in database
+            // TODO store refresh tokens in database
             // For now, return error
             return ApiResponse<AuthResponse>.ErrorResult("Refresh token functionality not implemented yet");
         }
 
         public async Task<ApiResponse<bool>> LogoutAsync(string refreshToken)
         {
-            // In a real implementation, you'd invalidate the refresh token
+            // TODO invalidate the refresh token
             // For now, return success
             return ApiResponse<bool>.SuccessResult(true, "Logout successful");
         }

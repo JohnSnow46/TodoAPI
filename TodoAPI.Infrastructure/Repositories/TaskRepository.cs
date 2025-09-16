@@ -138,7 +138,6 @@ namespace TodoAPI.Infrastructure.Repositories
 
         public async Task<IEnumerable<TaskItem>> GetOverdueTasksAsync(DateTime currentDate)
         {
-            // For now, return tasks that are not done and created more than 7 days ago
             var overdueDate = currentDate.AddDays(-7);
             return await _context.Tasks
                 .Include(t => t.User)

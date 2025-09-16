@@ -18,7 +18,7 @@ namespace TodoAPI.Application.Mapping
                 .ForMember(dest => dest.CreatedAt, opt => opt.Ignore())
                 .ForMember(dest => dest.UpdatedAt, opt => opt.Ignore())
                 .ForMember(dest => dest.Tasks, opt => opt.Ignore())
-                .ForMember(dest => dest.PasswordHash, opt => opt.Ignore()); // Will be set separately
+                .ForMember(dest => dest.PasswordHash, opt => opt.Ignore());
 
             CreateMap<UpdateUserDto, User>()
                 .ForMember(dest => dest.Id, opt => opt.Ignore())
@@ -44,7 +44,7 @@ namespace TodoAPI.Application.Mapping
             CreateMap<CreateTaskDto, TaskItem>()
                 .ForMember(dest => dest.Id, opt => opt.Ignore())
                 .ForMember(dest => dest.Status, opt => opt.MapFrom(src => Core.Enums.TaskStatus.Todo))
-                .ForMember(dest => dest.UserId, opt => opt.Ignore()) // Will be set from current user
+                .ForMember(dest => dest.UserId, opt => opt.Ignore())
                 .ForMember(dest => dest.CreatedAt, opt => opt.Ignore())
                 .ForMember(dest => dest.UpdatedAt, opt => opt.Ignore())
                 .ForMember(dest => dest.User, opt => opt.Ignore())
