@@ -379,14 +379,4 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - [ ] Mobile app integration
 - [ ] Third-party integrations (Calendar, Email)
 
-## 📞 Support
-
-For support and questions:
-
-- 📧 Email: support@todoapi.com
-- 🐛 Issues: [GitHub Issues](https://github.com/yourusername/TodoAPI/issues)
-- 📖 Documentation: Available in Swagger UI
-
----
-
 **Built with ❤️ using ASP.NET Core and Clean Architecture principles**
